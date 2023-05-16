@@ -18,6 +18,7 @@
     <selenideVersion>6.13.1</selenideVersion>
     <testngVersion>7.7.0</testngVersion>
     <fakerVersion>1.0.2</fakerVersion>
+    <restAssured>5.3.0</restAssured>
   </properties>
 
   <dependencies>
@@ -36,8 +37,17 @@
       <artifactId>javafaker</artifactId>
       <version>${fakerVersion}</version>
     </dependency>
-
-
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${restAssured}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.26</version>
+    </dependency>
   </dependencies>
 
   <build>
