@@ -3,6 +3,7 @@ package eu.senla.lab.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
+import eu.senla.lab.objects.Employee;
 import eu.senla.lab.utils.ConfigLoader;
 
 import java.time.Duration;
@@ -27,7 +28,7 @@ public class AdminPage {
 
     ElementsCollection autoCompleteOptions = $$x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']//descendant::div");
 
-    SelenideElement employeeName = $("input[data-v-7c56a434]");
+    SelenideElement employeeName = $x("//input[contains(@placeholder,'Type for hints')]");
 
     SelenideElement usernameField = $x("//label[text()='Username']/parent::div/following-sibling::div/child::input");
 
@@ -43,14 +44,14 @@ public class AdminPage {
         return this;
     }
 
-    public AdminPage fillInForm() throws InterruptedException {
+    public AdminPage fillInForm(Employee employee) throws InterruptedException {
         userRoleField.click();
         selectDropdown.should(appear);
         selectOptions.get(0).click();
         statusField.click();
         selectDropdown.should(appear);
         selectOptions.get(0).click();
-        employeeName.setValue("D");
+        employeeName.setValue(employee.getFirstName() + " " + employee.getLastName());
         Thread.sleep(2000);
         autocompleteDropdown.should(appear);
         autoCompleteOptions.get(0).click();

@@ -2,6 +2,7 @@ package eu.senla.lab.objects;
 
 import lombok.Data;
 
+
 @Data
 public class Employee {
 
