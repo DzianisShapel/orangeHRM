@@ -10,6 +10,8 @@ import static eu.senla.lab.constants.Route.LOGIN;
 public class LoginPage {
 
     SelenideElement username = $x("//input[@name='username']");
+
+    //(//input[@class='oxd-input oxd-input--active'])[1]']
     SelenideElement password = $x("//input[@name='password']");
     SelenideElement login = $("[type='submit']");
     SelenideElement title = $(".orangehrm-login-title");
