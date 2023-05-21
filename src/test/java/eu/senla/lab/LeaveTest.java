@@ -6,18 +6,18 @@ import eu.senla.lab.objects.Employee;
 import eu.senla.lab.pages.LoginPage;
 import org.testng.annotations.Test;
 
-public class AdminTest {
+public class LeaveTest {
 
     @Test
-    public void addAdminUser() throws InterruptedException {
+    public void assignLeave() throws InterruptedException {
         Employee employee = new Employee(new Faker().name().firstName(), new Faker().name().lastName(), new Faker().number().digits(4));
         ApiHelper.createEmployee(employee);
         new LoginPage().
                 openLoginPage().
                 login().
-                openAdminPage().
-                addUser().
-                fillInForm(employee).
-                checkRecordInTable(employee.getFirstName() + " " + employee.getLastName());
+                openLeavePage().
+                getNavigationBar().
+                navigateToAssignLeave().
+                assignLeave(employee);
     }
 }

@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
 import eu.senla.lab.objects.Employee;
+import eu.senla.lab.objects.JobTitle;
 import eu.senla.lab.pages.elements.NavigationBar;
 import eu.senla.lab.utils.ConfigLoader;
 
@@ -15,11 +16,9 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 import static eu.senla.lab.constants.Route.*;
 
-public class AdminPage {
+public class AdminPage extends BasePage {
 
     private NavigationBar navigationBar = new NavigationBar();
-
-    SelenideElement addButton = $(".oxd-button-icon");
 
     SelenideElement userRoleField = $x("//label[text()='User Role']/parent::div//following-sibling::div//child::div[@class='oxd-select-text-input']");
     SelenideElement statusField = $x("//label[text()='Status']/parent::div//following-sibling::div//child::div[@class='oxd-select-text-input']");
@@ -42,7 +41,7 @@ public class AdminPage {
 
     SelenideElement message = $(".oxd-toast-start");
 
-    SelenideElement saveButton = $("[type='submit']");
+
     public AdminPage addUser(){
         addButton.click();
         webdriver().shouldHave(url(ConfigLoader.getInstance().getBaseUri() + SAVE_SYSTEM_USER));
@@ -64,7 +63,7 @@ public class AdminPage {
         String password = new Faker().internet().password(8,16,true, true);
         passwordField.setValue(password);
         confirmPasswordField.setValue(password);
-        saveButton.click();
+        submitButton.click();
         message.should(appear, Duration.ofSeconds(10)).should(disappear);
         webdriver().shouldHave(urlContaining(VIEW_SYSTEM_USERS), Duration.ofSeconds(10));
         return this;
@@ -72,13 +71,6 @@ public class AdminPage {
 
     public AdminPage checkRecordInTable(String value){
         $x("//div[text()='" + value + "']").should(exist);
-        return this;
-    }
-
-    public AdminPage goToJobTitles(){
-        getNavigationBar().getJobTab().click();
-        getNavigationBar().jobTitleOption().click();
-        webdriver().shouldHave(urlContaining(VIEW_JOB_TITLE_LIST), Duration.ofSeconds(10));
         return this;
     }
 
@@ -90,8 +82,15 @@ public class AdminPage {
         addButton.click();
         webdriver().shouldHave(urlContaining(SAVE_JOB_TITLE), Duration.ofSeconds(10));
         jobTitleField.setValue(jobTitle);
-        saveButton.click();
+        submitButton.click();
         webdriver().shouldHave(urlContaining(VIEW_JOB_TITLE_LIST), Duration.ofSeconds(10));
+        return this;
+    }
+
+    public AdminPage deleteJobTitle(JobTitle jobTitle){
+        $x("//div[text()='" + jobTitle.getTitle() + "']/parent::div/following-sibling::div[2]/descendant::i[@class='oxd-icon bi-trash']").shouldBe(interactable).click();
+        $x("//*[text()=' Yes, Delete ']").click();
+        spinner.should(appear).should(disappear);
         return this;
     }
 }

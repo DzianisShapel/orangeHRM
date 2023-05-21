@@ -12,4 +12,10 @@ public class Route {
     public static final String SAVE_JOB_TITLE = "/admin/saveJobTitle";
     public static final String VALIDATE = "/auth/validate";
 
+    public static final String ADD_CANDIDATE = "/recruitment/addCandidate";
+
+    public static final String ASSIGN_LEAVE = "/leave/assignLeave";
+
+
+
 }
