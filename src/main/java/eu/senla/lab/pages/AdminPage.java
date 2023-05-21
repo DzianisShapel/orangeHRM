@@ -63,13 +63,14 @@ public class AdminPage extends BasePage {
         String password = new Faker().internet().password(8,16,true, true);
         passwordField.setValue(password);
         confirmPasswordField.setValue(password);
+        clickSubmitButton();
+        message.should(appear, Duration.ofSeconds(10)).should(disappear);
+        webdriver().shouldHave(urlContaining(VIEW_SYSTEM_USERS), Duration.ofSeconds(10));
         return this;
     }
 
-    public AdminPage submitForm() {
+    public AdminPage clickSubmitButton() {
         submitButton.click();
-        message.should(appear, Duration.ofSeconds(10)).should(disappear);
-        webdriver().shouldHave(urlContaining(VIEW_SYSTEM_USERS), Duration.ofSeconds(10));
         return this;
     }
 
@@ -97,5 +98,9 @@ public class AdminPage extends BasePage {
         $x("//*[text()=' Yes, Delete ']").click();
         spinner.should(appear).should(disappear);
         return this;
+    }
+
+    public int getRequiredFields() {
+        return $$x("//span[text()='Required']").size();
     }
 }
