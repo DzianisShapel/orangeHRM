@@ -18,6 +18,9 @@ public class LeaveTest {
                 openLeavePage().
                 getNavigationBar().
                 navigateToAssignLeave().
-                assignLeave(employee);
+                assignLeave(employee).
+                getNavigationBar().
+                navigateToLeaveList().
+                checkAssignedLeave(employee);
     }
 }

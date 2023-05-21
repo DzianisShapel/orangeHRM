@@ -15,7 +15,6 @@ public class Route {
     public static final String ADD_CANDIDATE = "/recruitment/addCandidate";
 
     public static final String ASSIGN_LEAVE = "/leave/assignLeave";
-
-
+    public static final String VIEW_LEAVE_LIST = "/leave/viewLeaveList";
 
 }

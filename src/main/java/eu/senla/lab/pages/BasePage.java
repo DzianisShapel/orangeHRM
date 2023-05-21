@@ -19,6 +19,12 @@ public class BasePage {
     public ElementsCollection selectOptions = $$x("//div[@class='oxd-select-dropdown --positon-bottom']//descendant::span");
     public SelenideElement employeeName = $x("//input[contains(@placeholder,'Type for hints')]");
 
+    public SelenideElement autocompleteDropdown = $x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']");
+
+    public ElementsCollection autoCompleteOptions = $$x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']//descendant::div");
+
+
     public SelenideElement modalConfirmButton = $(".oxd-button--secondary.orangehrm-button-margin");
+
 
 }

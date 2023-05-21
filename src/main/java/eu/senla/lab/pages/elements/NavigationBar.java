@@ -18,7 +18,7 @@ public class NavigationBar {
     private SelenideElement jobTitleOption = $x("//a[text()='Job Titles']");
 
     private SelenideElement assignLeaveTab = $x("//a[text()='Assign Leave']");
-
+    private SelenideElement leaveListTab = $x("//a[text()='Leave List']");
 
     public SelenideElement getJobTab() {
         return jobTab;
@@ -41,5 +41,12 @@ public class NavigationBar {
         webdriver().shouldHave(urlContaining(ASSIGN_LEAVE), Duration.ofSeconds(10));
         return new LeavePage();
     }
+
+    public LeavePage navigateToLeaveList(){
+        leaveListTab.click();
+        webdriver().shouldHave(urlContaining(VIEW_LEAVE_LIST), Duration.ofSeconds(10));
+        return new LeavePage();
+    }
+
 
 }
