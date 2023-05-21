@@ -17,7 +17,8 @@ public class AdminTest {
                 login().
                 openAdminPage().
                 addUser().
-                fillInForm(employee).
+                fillFormWithCorrectData(employee).
+                submitForm().
                 checkRecordInTable(employee.getFirstName() + " " + employee.getLastName());
     }
 }

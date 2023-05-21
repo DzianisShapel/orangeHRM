@@ -48,7 +48,7 @@ public class AdminPage extends BasePage {
         return this;
     }
 
-    public AdminPage fillInForm(Employee employee) throws InterruptedException {
+    public AdminPage fillFormWithCorrectData(Employee employee) throws InterruptedException {
         userRoleField.click();
         selectDropdown.should(appear);
         selectOptions.get(0).click();
@@ -63,18 +63,23 @@ public class AdminPage extends BasePage {
         String password = new Faker().internet().password(8,16,true, true);
         passwordField.setValue(password);
         confirmPasswordField.setValue(password);
+        return this;
+    }
+
+    public AdminPage submitForm() {
         submitButton.click();
         message.should(appear, Duration.ofSeconds(10)).should(disappear);
         webdriver().shouldHave(urlContaining(VIEW_SYSTEM_USERS), Duration.ofSeconds(10));
         return this;
     }
 
+
     public AdminPage checkRecordInTable(String value){
         $x("//div[text()='" + value + "']").should(exist);
         return this;
     }
 
-    public NavigationBar getNavigationBar() {
+    public NavigationBar goToNavigationBar() {
         return navigationBar;
     }
 

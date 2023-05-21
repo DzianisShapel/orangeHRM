@@ -19,7 +19,7 @@ public class JobTitleTest {
                 openLoginPage().
                 login().
                 openAdminPage().
-                getNavigationBar().
+                goToNavigationBar().
                 navigateToJobTitles();
         titles.forEach(adminPage::addJobTitle);
         titles.forEach(adminPage::checkRecordInTable);
@@ -36,7 +36,7 @@ public class JobTitleTest {
                 openLoginPage().
                 login().
                 openAdminPage().
-                getNavigationBar().
+                goToNavigationBar().
                 navigateToJobTitles();
         jobTitles.forEach(adminPage::deleteJobTitle);
     }

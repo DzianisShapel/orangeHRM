@@ -2,11 +2,13 @@ package eu.senla.lab.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import eu.senla.lab.pages.elements.UserDropdown;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class BasePage {
 
+    private UserDropdown userDropdown = new UserDropdown();
     public SelenideElement header = $(".oxd-topbar-header-breadcrumb-module");
 
     public SelenideElement addButton = $(".oxd-button-icon");
@@ -22,9 +24,11 @@ public class BasePage {
     public SelenideElement autocompleteDropdown = $x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']");
 
     public ElementsCollection autoCompleteOptions = $$x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']//descendant::div");
-
-
     public SelenideElement modalConfirmButton = $(".oxd-button--secondary.orangehrm-button-margin");
+
+    public UserDropdown goToUserDropdown(){
+            return userDropdown;
+    }
 
 
 }

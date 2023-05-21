@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static eu.senla.lab.constants.Route.LOGIN;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
     SelenideElement username = $x("//input[@name='username']");
 
@@ -18,7 +18,6 @@ public class LoginPage {
 
 
     public LoginPage openLoginPage(){
-
         open( ConfigLoader.getInstance().getBaseUri() + LOGIN);
         title.shouldHave(text("Login"));
         return this;
@@ -28,6 +27,7 @@ public class LoginPage {
         username.setValue(ConfigLoader.getInstance().getUsername());
         password.setValue(ConfigLoader.getInstance().getPassword());
         login.click();
+        header.shouldHave(text("Dashboard"));
         return new DashboardPage();
     }
 
