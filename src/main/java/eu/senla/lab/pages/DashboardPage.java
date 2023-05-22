@@ -15,6 +15,7 @@ public class DashboardPage extends BasePage {
         SelenideElement adminButton = $x("//span[text()='Admin']");
         SelenideElement recruitmentButton = $x("//span[text()='Recruitment']");
         SelenideElement leaveButton = $x("//span[text()='Leave']");
+        SelenideElement pimButton = $x("//span[text()='PIM']");
         ElementsCollection dashboardElements = $$("div.orangehrm-dashboard-widget-name > p.oxd-text--p");
 
 
@@ -34,6 +35,12 @@ public class DashboardPage extends BasePage {
             leaveButton.click();
             header.shouldHave(text("Leave"));
             return new LeavePage();
+        }
+
+        public PIMPage openPIMPage(){
+            pimButton.click();
+            header.shouldHave(text("PIM"));
+            return new PIMPage();
         }
 
         public List<String> getDashboardElements(){

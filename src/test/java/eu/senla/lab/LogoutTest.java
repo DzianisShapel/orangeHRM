@@ -3,7 +3,7 @@ package eu.senla.lab;
 import eu.senla.lab.pages.LoginPage;
 import org.testng.annotations.Test;
 
-public class LogoutTest {
+public class LogoutTest  extends BaseTest{
 
 
     @Test

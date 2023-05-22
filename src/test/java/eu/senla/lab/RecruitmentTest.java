@@ -6,8 +6,7 @@ import eu.senla.lab.objects.Employee;
 import eu.senla.lab.pages.LoginPage;
 import org.testng.annotations.Test;
 
-public class RecruitmentTest {
-
+public class RecruitmentTest extends  BaseTest{
 
     @Test
     public void addCandidate() {

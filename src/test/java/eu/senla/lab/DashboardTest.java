@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class DashboardTest {
+public class DashboardTest extends BaseTest {
 
     @Test
     public void checkDashboard(){

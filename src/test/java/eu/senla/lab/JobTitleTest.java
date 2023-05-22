@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobTitleTest {
+public class JobTitleTest extends BaseTest {
 
     @Test
     public void addJobTitle() {

@@ -5,16 +5,13 @@ import eu.senla.lab.api.ApiHelper;
 import eu.senla.lab.objects.Employee;
 import eu.senla.lab.pages.LoginPage;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
-import static com.codeborne.selenide.Selenide.webdriver;
-
-public class AdminTest {
+public class AdminTest extends BaseTest {
 
     @DataProvider(name = "passwordData")
     public Iterator<Object[]> createPasswordData() {
@@ -23,12 +20,6 @@ public class AdminTest {
                 new Object[]{"12345678", "Your password must contain minimum 1 lower-case letter"}
         ).iterator();
     }
-
-    @AfterMethod
-    public void closeBrowser(){
-        webdriver().driver().getWebDriver().quit();
-    }
-
 
     @Test
     public void addAdminUser() throws InterruptedException {
@@ -39,7 +30,7 @@ public class AdminTest {
                 openLoginPage().
                 login().
                 openAdminPage().
-                addUser().
+                clickAddUserButton().
                 fillFormWithCorrectData(employee, password).
                 checkRecordInTable(employee.getFirstName() + " " + employee.getLastName());
     }
@@ -50,8 +41,8 @@ public class AdminTest {
                 openLoginPage().
                 login().
                 openAdminPage().
-                addUser().
-                clickSubmitButton().
+                clickAddUserButton().
+                setFieldsEmptyAndClick().
                 getRequiredFields();
         Assertions.assertThat(totalRequiredFields).isEqualTo(6);
     }
@@ -62,7 +53,7 @@ public class AdminTest {
                 openLoginPage().
                 login().
                 openAdminPage().
-                addUser().
+                clickAddUserButton().
                 setPasswordField(password).
                 getPasswordHint();
 
@@ -76,7 +67,7 @@ public class AdminTest {
                 openLoginPage().
                 login().
                 openAdminPage().
-                addUser().
+                clickAddUserButton().
                 setPasswordField(password).
                 setConfirmPasswordField(password.substring(2,4)).
                 getConfirmPasswordHint();
@@ -90,7 +81,9 @@ public class AdminTest {
                 openLoginPage().
                 login().
                 openAdminPage().
-                addUser().setUsernameField(username).getUsernameHint();
+                clickAddUserButton().
+                setUsernameField(username).
+                getUsernameHint();
         Assertions.assertThat(actualHint).isEqualTo("Should be at least 5 characters");
     }
 

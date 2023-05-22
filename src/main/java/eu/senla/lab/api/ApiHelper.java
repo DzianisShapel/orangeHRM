@@ -52,7 +52,7 @@ public class ApiHelper extends SpecBuilder {
         queryParams.put("fromDate", localDateString);
         queryParams.put("toDate", localDateString);
         queryParams.put("includeEmployees", "onlyCurrent");
-        queryParams.put("statuses[]", "2");
+        queryParams.put("statuses[]", "3");
 
         return given().
                 spec(getRequestSpecification()).
