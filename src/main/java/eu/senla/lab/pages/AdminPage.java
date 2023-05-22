@@ -33,12 +33,17 @@ public class AdminPage extends BasePage {
 
     SelenideElement usernameField = $x("//label[text()='Username']/parent::div/following-sibling::div/child::input");
 
+    SelenideElement usernameHint = $x("//label[text()='Username']/parent::div/following-sibling::span");
+
     SelenideElement passwordField = $x("//label[text()='Password']/parent::div/following-sibling::div/child::input");
+
+    SelenideElement passwordHint = $x("//label[text()='Password']/parent::div/following-sibling::span");
 
     SelenideElement jobTitleField = $x("//label[text()='Job Title']/parent::div/following-sibling::div/child::input");
 
     SelenideElement confirmPasswordField = $x("//label[text()='Confirm Password']/parent::div/following-sibling::div/child::input");
 
+    SelenideElement confirmPasswordHint = $x("//label[text()='Confirm Password']/parent::div/following-sibling::span");
     SelenideElement message = $(".oxd-toast-start");
 
 
@@ -48,7 +53,7 @@ public class AdminPage extends BasePage {
         return this;
     }
 
-    public AdminPage fillFormWithCorrectData(Employee employee) throws InterruptedException {
+    public AdminPage fillFormWithCorrectData(Employee employee, String password) throws InterruptedException {
         userRoleField.click();
         selectDropdown.should(appear);
         selectOptions.get(0).click();
@@ -59,13 +64,27 @@ public class AdminPage extends BasePage {
         Thread.sleep(2000);
         autocompleteDropdown.should(appear);
         autoCompleteOptions.get(0).click();
-        usernameField.setValue(new Faker().name().username());
-        String password = new Faker().internet().password(8,16,true, true);
-        passwordField.setValue(password);
-        confirmPasswordField.setValue(password);
+        setUsernameField(new Faker().name().username()).
+        setPasswordField(password).
+        setConfirmPasswordField(password).
         clickSubmitButton();
         message.should(appear, Duration.ofSeconds(10)).should(disappear);
         webdriver().shouldHave(urlContaining(VIEW_SYSTEM_USERS), Duration.ofSeconds(10));
+        return this;
+    }
+
+    public AdminPage setUsernameField(String username){
+        usernameField.setValue(username);
+        return this;
+    }
+
+    public AdminPage setPasswordField(String password){
+        passwordField.setValue(password);
+        return this;
+    }
+
+    public AdminPage setConfirmPasswordField(String password){
+        confirmPasswordField.setValue(password);
         return this;
     }
 
@@ -102,5 +121,17 @@ public class AdminPage extends BasePage {
 
     public int getRequiredFields() {
         return $$x("//span[text()='Required']").size();
+    }
+
+    public String getPasswordHint(){
+        return passwordHint.should(appear).text();
+    }
+
+    public String getConfirmPasswordHint() {
+        return confirmPasswordHint.text();
+    }
+
+    public String getUsernameHint(){
+        return usernameHint.text();
     }
 }
