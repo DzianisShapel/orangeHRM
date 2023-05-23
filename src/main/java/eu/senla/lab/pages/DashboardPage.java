@@ -2,12 +2,17 @@ package eu.senla.lab.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
+import eu.senla.lab.api.actions.AuthHelper;
+import eu.senla.lab.utils.ConfigLoader;
+import eu.senla.lab.utils.CookieUtils;
+import io.restassured.http.Cookie;
 
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
+import static eu.senla.lab.constants.Route.LOGIN;
 
 
 public class DashboardPage extends BasePage {
@@ -18,6 +23,15 @@ public class DashboardPage extends BasePage {
         SelenideElement pimButton = $x("//span[text()='PIM']");
         ElementsCollection dashboardElements = $$("div.orangehrm-dashboard-widget-name > p.oxd-text--p");
 
+        public DashboardPage openDashboardPage(){
+            open(ConfigLoader.getInstance().getBaseUri());
+            Cookie cookie = AuthHelper.getAuthCookie();
+            org.openqa.selenium.Cookie selCookie = CookieUtils.convertRestAssuredToSeleniumCookie(cookie);
+            WebDriverRunner.getWebDriver().manage().addCookie(selCookie);
+            WebDriverRunner.getWebDriver().navigate().to(ConfigLoader.getInstance().getBaseUri() + "/dashboard/index");
+
+            return this;
+        }
 
         public AdminPage openAdminPage(){
             adminButton.click();

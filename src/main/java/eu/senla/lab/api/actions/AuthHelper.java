@@ -31,9 +31,9 @@ public class AuthHelper extends SpecBuilder {
                 spec(getRequestSpecification()).
                 cookie(cookie).
                 formParams(formParams).
-                when().
+        when().
                 post(VALIDATE).
-                then().spec(getResponseSpecification()).
+        then().spec(getResponseSpecification()).
                 statusCode(302).
                 extract().
                 response().detailedCookie("orangehrm");
