@@ -3,6 +3,7 @@ package eu.senla.lab;
 import com.github.javafaker.Faker;
 import eu.senla.lab.api.ApiHelper;
 import eu.senla.lab.objects.Employee;
+import eu.senla.lab.pages.AdminPage;
 import eu.senla.lab.pages.LoginPage;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
@@ -36,10 +37,7 @@ public class AdminTest extends BaseTest {
 
     @Test
     public void allFieldsRequired() {
-        int totalRequiredFields = new LoginPage().
-                openLoginPage().
-                login().
-                openAdminPage().
+        int totalRequiredFields = new AdminPage().open().
                 clickAddUserButton().
                 setFieldsEmptyAndClick().
                 getRequiredFields();
@@ -48,10 +46,7 @@ public class AdminTest extends BaseTest {
 
     @Test(dataProvider = "passwordData")
     public void validatePasswordField(String password, String expectedHint){
-        String actualHint = new LoginPage().
-                openLoginPage().
-                login().
-                openAdminPage().
+        String actualHint = new AdminPage().open().
                 clickAddUserButton().
                 setPasswordField(password).
                 getPasswordHint();
@@ -62,10 +57,7 @@ public class AdminTest extends BaseTest {
     @Test
     public void validateConfirmPasswordField(){
         String password = "qwerty123";
-        String actualHint = new LoginPage().
-                openLoginPage().
-                login().
-                openAdminPage().
+        String actualHint = new AdminPage().open().
                 clickAddUserButton().
                 setPasswordField(password).
                 setConfirmPasswordField(password.substring(2,4)).
@@ -76,10 +68,7 @@ public class AdminTest extends BaseTest {
     @Test
     public void validateUsernameField(){
         String username = "user";
-        String actualHint = new LoginPage().
-                openLoginPage().
-                login().
-                openAdminPage().
+        String actualHint = new AdminPage().open().
                 clickAddUserButton().
                 setUsernameField(username).
                 getUsernameHint();

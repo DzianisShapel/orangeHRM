@@ -1,5 +1,6 @@
 package eu.senla.lab;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import eu.senla.lab.api.ApiHelper;
@@ -30,6 +31,6 @@ public class BaseTest {
 
     @AfterMethod
     public void closeBrowser(){
-        webdriver().driver().getWebDriver().quit();
+        Selenide.closeWebDriver();
     }
 }

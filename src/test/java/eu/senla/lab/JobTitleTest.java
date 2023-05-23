@@ -32,10 +32,7 @@ public class JobTitleTest extends BaseTest {
         jobTitles.add(new JobTitle("title to delete", new Faker().company().profession()));
         jobTitles.add(new JobTitle("title to delete", new Faker().company().profession()));
         jobTitles.forEach(ApiHelper::addJobTitle);
-        AdminPage adminPage = new LoginPage().
-                openLoginPage().
-                login().
-                openAdminPage().
+        AdminPage adminPage = new AdminPage().open().
                 goToNavigationBar().
                 navigateToJobTitles();
         jobTitles.forEach(adminPage::deleteJobTitle);

@@ -2,7 +2,6 @@ package eu.senla.lab;
 
 
 import eu.senla.lab.pages.DashboardPage;
-import eu.senla.lab.pages.LoginPage;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
@@ -12,7 +11,7 @@ public class DashboardTest extends BaseTest {
 
     @Test
     public void checkDashboard(){
-        List<String> elements = new DashboardPage().openDashboardPage().
+        List<String> elements = new DashboardPage().open().
                 getDashboardElements();
         validateElements(elements);
     }

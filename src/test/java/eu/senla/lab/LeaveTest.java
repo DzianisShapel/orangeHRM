@@ -3,6 +3,7 @@ package eu.senla.lab;
 import com.github.javafaker.Faker;
 import eu.senla.lab.api.ApiHelper;
 import eu.senla.lab.objects.Employee;
+import eu.senla.lab.pages.LeavePage;
 import eu.senla.lab.pages.LoginPage;
 import io.restassured.response.Response;
 import org.assertj.core.api.Assertions;
@@ -12,7 +13,7 @@ import org.testng.asserts.SoftAssert;
 public class LeaveTest extends BaseTest {
 
     @Test
-    public void assignLeaveRequest() throws InterruptedException {
+    public void assignLeaveRequest() {
         Employee employee = new Employee(new Faker().name().firstName(), new Faker().name().lastName(), new Faker().number().digits(4));
         int empNumber = ApiHelper.createEmployee(employee);
         new LoginPage().
@@ -28,12 +29,7 @@ public class LeaveTest extends BaseTest {
 
     @Test
     public void validateAssignLeaveForm(){
-        int num = new LoginPage().
-                openLoginPage().
-                login().
-                openLeavePage().
-                getNavigationBar().
-                navigateToAssignLeave().
+        int num = new LeavePage().open().
                 getAssignLeaveForm().
                 clickAssignButton().
                 getRequiredFields();
