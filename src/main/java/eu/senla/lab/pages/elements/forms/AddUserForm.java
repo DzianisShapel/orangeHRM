@@ -20,8 +20,6 @@ public class AddUserForm extends BaseForm {
 
     SelenideElement userRoleField = $x("//label[text()='User Role']/parent::div//following-sibling::div//child::div[@class='oxd-select-text-input']");
     SelenideElement statusField = $x("//label[text()='Status']/parent::div//following-sibling::div//child::div[@class='oxd-select-text-input']");
-    SelenideElement selectDropdown = $x("//div[@class='oxd-select-dropdown --positon-bottom']");
-    ElementsCollection selectOptions = $$x("//div[@class='oxd-select-dropdown --positon-bottom']//descendant::span");
     SelenideElement usernameField = $x("//label[text()='Username']/parent::div/following-sibling::div/child::input");
 
     SelenideElement usernameHint = $x("//label[text()='Username']/parent::div/following-sibling::span");
@@ -41,7 +39,7 @@ public class AddUserForm extends BaseForm {
         setUsernameField(new Faker().name().username()).
         setPasswordField(password).
         setConfirmPasswordField(password).
-        setEmployeeName(employee).
+        setEmployeeName(employee);
         clickSubmitButton();
         message.should(appear, Duration.ofSeconds(10)).should(disappear);
         webdriver().shouldHave(urlContaining(VIEW_SYSTEM_USERS), Duration.ofSeconds(10));
@@ -98,4 +96,9 @@ public class AddUserForm extends BaseForm {
         submitButton.click();
         return this;
     }
+
+/*    public RecordTable clickSubmitButton() {
+        submitButton.click();
+        return new RecordTable();
+    }*/
 }

@@ -46,7 +46,7 @@ public class AdminPage extends BasePage {
     }
 
     public AdminPage deleteJobTitle(JobTitle jobTitle){
-        $x("//div[text()='" + jobTitle.getTitle() + "']/parent::div/following-sibling::div[2]/descendant::i[@class='oxd-icon bi-trash']").shouldBe(interactable).click();
+        $x("//div[text()='" + jobTitle.getTitle() + "']/parent::div/following-sibling::div[2]/descendant::i[@class='oxd-icon bi-trash']").shouldBe(interactable, Duration.ofSeconds(7)).click();
         $x("//*[text()=' Yes, Delete ']").click();
         spinner.should(appear).should(disappear);
         return this;

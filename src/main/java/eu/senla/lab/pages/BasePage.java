@@ -17,14 +17,6 @@ public class BasePage {
 
     public SelenideElement spinner = $x("//div[@class='oxd-loading-spinner']");
 
-    public SelenideElement selectDropdown = $x("//div[@class='oxd-select-dropdown --positon-bottom']");
-    public ElementsCollection selectOptions = $$x("//div[@class='oxd-select-dropdown --positon-bottom']//descendant::span");
-    public SelenideElement employeeName = $x("//input[contains(@placeholder,'Type for hints')]");
-
-    public SelenideElement autocompleteDropdown = $x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']");
-
-    public ElementsCollection autoCompleteOptions = $$x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']//descendant::div");
-    public SelenideElement modalConfirmButton = $(".oxd-button--secondary.orangehrm-button-margin");
 
     public UserDropdown goToUserDropdown(){
             return userDropdown;

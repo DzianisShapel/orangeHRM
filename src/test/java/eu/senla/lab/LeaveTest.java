@@ -21,6 +21,7 @@ public class LeaveTest extends BaseTest {
                 openLeavePage().
                 getNavigationBar().
                 navigateToAssignLeave().
+                getAssignLeaveForm().
                 assignLeave(employee);
         checkAssignedLeave(empNumber);
     }
@@ -33,7 +34,8 @@ public class LeaveTest extends BaseTest {
                 openLeavePage().
                 getNavigationBar().
                 navigateToAssignLeave().
-                clickSubmitButton().
+                getAssignLeaveForm().
+                clickAssignButton().
                 getRequiredFields();
         Assertions.assertThat(num).isEqualTo(4);
     }

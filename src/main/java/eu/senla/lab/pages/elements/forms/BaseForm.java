@@ -4,7 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import eu.senla.lab.objects.Employee;
 import eu.senla.lab.pages.elements.RecordTable;
-;
+
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selenide.*;
@@ -15,6 +15,9 @@ public class BaseForm {
     SelenideElement autocompleteDropdown = $x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']");
     ElementsCollection autoCompleteOptions = $$x("//div[@class='oxd-autocomplete-dropdown --positon-bottom']//descendant::div");
 
+    SelenideElement selectDropdown = $x("//div[@class='oxd-select-dropdown --positon-bottom']");
+    ElementsCollection selectOptions = $$x("//div[@class='oxd-select-dropdown --positon-bottom']//descendant::span");
+    SelenideElement modalConfirmButton = $(".oxd-button--secondary.orangehrm-button-margin");
     SelenideElement submitButton = $("[type='submit']");
     public BaseForm setEmployeeName(Employee employee) {
         try {
