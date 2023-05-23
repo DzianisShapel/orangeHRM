@@ -23,9 +23,8 @@ public class AdminTest extends BaseTest {
 
     @Test
     public void addAdminUser() throws InterruptedException {
-        Employee employee = new Employee(new Faker().name().firstName(), new Faker().name().lastName(), new Faker().number().digits(4));
+        Employee employee = createEmployee();
         String password = new Faker().internet().password(8,16,true, true);
-        ApiHelper.createEmployee(employee);
         new LoginPage().
                 openLoginPage().
                 login().

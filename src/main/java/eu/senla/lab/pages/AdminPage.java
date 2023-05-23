@@ -9,7 +9,8 @@ import eu.senla.lab.utils.ConfigLoader;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.url;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 import static eu.senla.lab.constants.Route.*;

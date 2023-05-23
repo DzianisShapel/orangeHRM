@@ -1,6 +1,6 @@
 package eu.senla.lab.pages;
 
-import com.codeborne.selenide.ElementsCollection;
+
 import com.codeborne.selenide.SelenideElement;
 import eu.senla.lab.pages.elements.UserDropdown;
 
