@@ -18,8 +18,8 @@ import static eu.senla.lab.constants.Route.*;
 
 public class AdminPage extends BasePage {
 
-    private NavigationBar navigationBar = new NavigationBar();
-    private AddUserForm addUserForm = new AddUserForm();
+    private final NavigationBar navigationBar = new NavigationBar();
+    private final AddUserForm addUserForm = new AddUserForm();
 
     SelenideElement jobTitleField = $x("//label[text()='Job Title']/parent::div/following-sibling::div/child::input");
 

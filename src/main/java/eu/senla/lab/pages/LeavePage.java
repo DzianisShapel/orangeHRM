@@ -12,13 +12,13 @@ import static eu.senla.lab.constants.Route.ASSIGN_LEAVE;
 
 public class LeavePage extends BasePage {
 
-    private AssignLeaveForm assignLeaveForm = new AssignLeaveForm();
+    private final AssignLeaveForm assignLeaveForm = new AssignLeaveForm();
 
     public AssignLeaveForm getAssignLeaveForm(){
         return assignLeaveForm;
     }
 
-    private NavigationBar navigationBar = new NavigationBar();
+    private final NavigationBar navigationBar = new NavigationBar();
 
     public NavigationBar getNavigationBar() {
         return navigationBar;

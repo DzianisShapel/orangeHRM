@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class PIMPage extends BasePage {
 
-    private EmployeeInformationForm employeeInformationForm = new EmployeeInformationForm();
+    private final EmployeeInformationForm employeeInformationForm = new EmployeeInformationForm();
 
     public EmployeeInformationForm getEmployeeInformationForm(){
         return employeeInformationForm;

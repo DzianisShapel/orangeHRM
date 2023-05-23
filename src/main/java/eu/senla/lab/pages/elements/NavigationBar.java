@@ -13,11 +13,11 @@ import static eu.senla.lab.constants.Route.*;
 
 public class NavigationBar {
 
-    private SelenideElement jobTab = $x("//span[contains(text(), 'Job')]");
+    private final SelenideElement jobTab = $x("//span[contains(text(), 'Job')]");
 
-    private SelenideElement jobTitleOption = $x("//a[text()='Job Titles']");
+    private final SelenideElement jobTitleOption = $x("//a[text()='Job Titles']");
 
-    private SelenideElement assignLeaveTab = $x("//a[text()='Assign Leave']");
+    private final SelenideElement assignLeaveTab = $x("//a[text()='Assign Leave']");
 
 
     public AdminPage navigateToJobTitles(){

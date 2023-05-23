@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class BasePage {
 
-    private UserDropdown userDropdown = new UserDropdown();
+    private final UserDropdown userDropdown = new UserDropdown();
     public SelenideElement header = $(".oxd-topbar-header-breadcrumb-module");
 
     public SelenideElement addButton = $(".oxd-button-icon");
