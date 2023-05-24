@@ -2,6 +2,7 @@ package eu.senla.lab.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import eu.senla.lab.objects.JobTitle;
 import eu.senla.lab.pages.elements.NavigationBar;
 import eu.senla.lab.pages.elements.forms.AddUserForm;
@@ -24,8 +25,10 @@ public class AdminPage extends BasePage {
     SelenideElement jobTitleField = $x("//label[text()='Job Title']/parent::div/following-sibling::div/child::input");
 
     public AdminPage open(){
-        Selenide.open(ConfigLoader.getInstance().getBaseUri() + VIEW_SYSTEM_USERS);
+        Selenide.open(ConfigLoader.getInstance().getBaseUri() + LOGIN);
         injectCookieToBrowser();
+        Selenide.refresh();
+        WebDriverRunner.getWebDriver().navigate().to(ConfigLoader.getInstance().getBaseUri() + VIEW_SYSTEM_USERS);
         header.shouldHave(text("Admin"));
         return this;
     }

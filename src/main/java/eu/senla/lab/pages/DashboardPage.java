@@ -3,16 +3,13 @@ package eu.senla.lab.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
-import eu.senla.lab.api.actions.AuthHelper;
 import eu.senla.lab.utils.ConfigLoader;
-import eu.senla.lab.utils.CookieUtils;
-import io.restassured.http.Cookie;
 
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.$x;
 
 
 public class DashboardPage extends BasePage {
@@ -26,6 +23,7 @@ public class DashboardPage extends BasePage {
         public DashboardPage open(){
             Selenide.open(ConfigLoader.getInstance().getBaseUri() + "/dashboard/index");
             injectCookieToBrowser();
+            Selenide.refresh();
             header.shouldHave(text("Dashboard"));
             return this;
         }
