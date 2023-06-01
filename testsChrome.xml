@@ -2,9 +2,39 @@
 
 <suite name="All tests in chrome" verbose="1">
     <parameter name="browser" value="chrome"/>
-    <test name="chrome">
-    <classes>
-        <class name="eu.senla.lab.AdminTest"/>
-    </classes>
-</test>
+        <test name="Admin test" >
+            <classes>
+                <class name="eu.senla.lab.AdminTest"/>
+            </classes>
+        </test>
+        <test name="DashboardTest">
+            <classes>
+                <class name="eu.senla.lab.DashboardTest"/>
+            </classes>
+        </test>
+        <test name="JobTitleTest">
+            <classes>
+                <class name="eu.senla.lab.JobTitleTest"/>
+            </classes>
+        </test>
+        <test name="LeaveTest">
+            <classes>
+                <class name="eu.senla.lab.LeaveTest"/>
+            </classes>
+        </test>
+        <test name="LogoutTest">
+            <classes>
+                <class name="eu.senla.lab.LogoutTest"/>
+            </classes>
+        </test>
+        <test name="PIMTest">
+            <classes>
+                <class name="eu.senla.lab.PIMTest"/>
+            </classes>
+        </test>
+        <test name="RecruitmentTest">
+            <classes>
+                <class name="eu.senla.lab.RecruitmentTest"/>
+            </classes>
+        </test>
 </suite>
