@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="All tests in firefox" verbose="1">
+    <test name="firefox">
+    <parameter name="browser" value="firefox"/>
+    <packages>
+        <package name="src/test/java/eu/senla/lab"/>
+    </packages>
+    </test>
+</suite>
