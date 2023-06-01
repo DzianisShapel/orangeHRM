@@ -3,8 +3,8 @@
 <suite name="All tests in firefox" verbose="1">
     <test name="firefox">
     <parameter name="browser" value="firefox"/>
-    <packages>
-        <package name="src/test/java/eu/senla/lab"/>
-    </packages>
+        <classes>
+            <class name="eu.senla.lab.AdminTest"/>
+        </classes>
     </test>
 </suite>
