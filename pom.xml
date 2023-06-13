@@ -69,6 +69,12 @@
             <artifactId>selenium-java</artifactId>
             <version>4.9.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.codeborne/selenide-selenoid -->
+<!--        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide-selenoid</artifactId>
+            <version>6.15.0</version>
+        </dependency>-->
     </dependencies>
 
     <build>
