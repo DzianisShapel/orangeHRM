@@ -33,7 +33,7 @@ public class AddUserForm extends BaseForm {
     SelenideElement confirmPasswordHint = $x("//label[text()='Confirm Password']/parent::div/following-sibling::span");
     SelenideElement message = $(".oxd-toast-start");
 
-    public RecordTable fillFormWithCorrectData(Employee employee, String password) throws InterruptedException {
+    public RecordTable fillFormWithCorrectData(Employee employee, String password) {
         setUserRoleField().
         setUserStatus().
         setUsernameField(new Faker().name().username()).
@@ -46,14 +46,14 @@ public class AddUserForm extends BaseForm {
         return new RecordTable();
     }
 
-    public AddUserForm setUserRoleField(){
+    private AddUserForm setUserRoleField(){
         userRoleField.click();
         selectDropdown.should(appear);
         selectOptions.get(0).click();
         return this;
     }
 
-    public AddUserForm setUserStatus(){
+    private AddUserForm setUserStatus(){
         statusField.click();
         selectDropdown.should(appear);
         selectOptions.get(0).click();

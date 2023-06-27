@@ -1,5 +1,6 @@
 package eu.senla.lab.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 
@@ -9,7 +10,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String employeeId;
-
+    @JsonIgnore
     private String email;
 
 

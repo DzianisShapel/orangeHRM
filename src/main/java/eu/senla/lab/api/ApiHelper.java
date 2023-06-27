@@ -1,9 +1,12 @@
 package eu.senla.lab.api;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.senla.lab.api.actions.AuthHelper;
 import eu.senla.lab.api.actions.SpecBuilder;
 import eu.senla.lab.objects.Employee;
 import eu.senla.lab.objects.JobTitle;
+import eu.senla.lab.objects.ParamsForLeaveRequest;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -46,19 +49,22 @@ public class ApiHelper extends SpecBuilder {
     public static Response getEmployeeLeaveRequest(int number){
         LocalDate localDate = LocalDate.now();
         String localDateString = localDate.format(DateTimeFormatter.ISO_DATE);
+        ParamsForLeaveRequest params = new ParamsForLeaveRequest(String.valueOf(number), localDateString, localDateString,"onlyCurrent", "3");
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, String> map = objectMapper.convertValue(params, new TypeReference<>(){});
 
-        Map<String, String> queryParams = new HashMap<>();
+        /*Map<String, String> queryParams = new HashMap<>();
         queryParams.put("empNumber", String.valueOf(number));
         queryParams.put("fromDate", localDateString);
         queryParams.put("toDate", localDateString);
         queryParams.put("includeEmployees", "onlyCurrent");
-        queryParams.put("statuses[]", "3");
+        queryParams.put("statuses[]", "3");*/
 
         return given().
                 spec(getRequestSpecification()).
                 contentType(ContentType.JSON).
                 cookie(AuthHelper.getAuthCookie()).
-                queryParams(queryParams).
+                queryParams(map).
         when().
                 get("/api/v2/leave/employees/leave-requests").
         then().spec(getResponseSpecification()).
